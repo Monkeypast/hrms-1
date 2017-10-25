@@ -28,6 +28,47 @@ class Review(models.Model):
     comment = models.CharField(max_length=200)
     rating = models.IntegerField(choices=RATING_CHOICES)
 
+class EmpReview(models.Model):
+    SALARY_CHOICES = (
+        (0, 'LOW'),
+        (1, 'MEDIUM'),
+        (2, 'HIGH'),
+    )
+    WORK_ACCIDENT_CHOICES = (
+        (0, 'NO'),
+        (1, 'YES'),
+    )
+    LEFT_CHOICES = (
+        (0, 'NO'),
+        (1, 'YES'),
+    )
+    PROMOTION_CHOICES = (
+        (0, 'NO'),
+        (1, 'YES'),
+    )
+    DEPARTMENT_CHOICES = (
+        (0, 'sales'),
+        (1, 'accounting'),
+        (2, 'hr'),
+        (3, 'technical'),
+        (4, 'support'),
+        (5, 'management'),
+        (6, 'IT'),
+        (7, 'product_mng'),
+        (8, 'marketing'),
+        (9, 'RandD'),
+    )
+    satisfaction_level = models.DecimalField(max_digits=3, decimal_places=2)
+    last_evaluation = models.DecimalField(max_digits=3, decimal_places=2)
+    number_project = models.IntegerField()
+    average_montly_hours = models.IntegerField()
+    time_spend_company = models.IntegerField()
+    Work_accident = models.IntegerField(choices=WORK_ACCIDENT_CHOICES)
+    left = models.IntegerField(choices=LEFT_CHOICES)
+    promotion_last_5years = models.IntegerField(choices=PROMOTION_CHOICES)
+    department =models.IntegerField(choices=DEPARTMENT_CHOICES)
+    salary = models.IntegerField(choices=SALARY_CHOICES)
+    user_name = models.CharField(max_length=100)
 
 class Cluster(models.Model):
     name = models.CharField(max_length=100)

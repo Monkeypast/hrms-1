@@ -39,12 +39,12 @@ id,username,wine_id,rating,comment
 37,lluis,0,4,"Chalk, almonds, rain"
 38,lluis,2,5,"Dry fruit, lead, iron, dry flowers."
 39,lluis,5,5,"Rioja, rioja, rioja"
-40,lluis,8,4,"God!"
-41,lluis,6,5,"A different Ribera"
-42,lluis,4,5,"Purity in Chablis in a great year"
-43,pepe,10,5,"Jooe!"
-44,pepe,6,4,"Vega Siclia..."
-45,pepe,0,4,"Esto y unas gambitas!"
-46,pepe,1,2,"No esta mal"
-47,pepe,2,4,"Muy bueno"
-47,pepe,8,5,"Impresionante"
+40,lluis,8,4,God!
+41,lluis,6,5,A different Ribera
+42,lluis,4,5,Purity in Chablis in a great year
+43,pepe,10,5,Jooe!
+44,pepe,6,4,Vega Siclia...
+45,pepe,0,4,Esto y unas gambitas!
+46,pepe,1,2,No esta mal
+47,pepe,2,4,Muy bueno
+47,pepe,8,5,Impresionante
