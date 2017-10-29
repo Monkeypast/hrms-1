@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from .models import Review, Wine, Cluster
 from .forms import ReviewForm
 from .suggestions import update_clusters
+from .tables import StaffTable
+from django_tables2 import RequestConfig
 
 import datetime
 
@@ -26,6 +28,16 @@ def wine_list(request):
     context = {'wine_list':wine_list}
     return render(request, 'reviews/wine_list.html', context)
 
+def staff_list(request):
+    staff_list = StaffTable(User.objects.all())
+    RequestConfig(request).configure(staff_list)
+    return render(request, 'reviews/staff_list.html', {'staff_list': staff_list})
+    #staff_list = User.objects.order_by('-username')
+    #context = {'staff_list':staff_list}
+    #return render(request, 'reviews/staff_list.html', context)
+    
+    #staff_list = User.objects.all()
+    #return render(request, 'reviews/staff_list.html', {'staff_list': staff_list})
 
 def wine_detail(request, wine_id):
     wine = get_object_or_404(Wine, pk=wine_id)

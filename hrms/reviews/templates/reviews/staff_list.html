@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load render_table from django_tables2 %}
+{% load static %}
+
+{% block title %}
+<h2>Staff List</h2>
+{% endblock %}
+
+{% block content %}
+{% if staff_list %}
+	{% render_table staff_list %}
+{% else %}
+    <p>No staffs are available.</p>
+{% endif %}
+
+{% endblock %}
