@@ -11,6 +11,8 @@ urlpatterns = [
     url(r'^wine$', views.wine_list, name='wine_list'),
     
     url(r'^staff$', views.staff_list, name='staff_list'),
+    url(r'^staff/(?P<staff_id>[0-9]+)/$', views.staff_detail, name='staff_detail'),
+    url(r'^staff/(?P<staff_id>[0-9]+)/add_emp_review/$', views.add_emp_review, name='add_emp_review'),
     
     # ex: /wine/5/
     url(r'^wine/(?P<wine_id>[0-9]+)/$', views.wine_detail, name='wine_detail'),

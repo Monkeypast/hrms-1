@@ -2,8 +2,8 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from .models import Review, Wine, Cluster
-from .forms import ReviewForm
+from .models import Review, Wine, Cluster, EmpReview
+from .forms import ReviewForm, EmpReviewForm
 from .suggestions import update_clusters
 from .tables import StaffTable
 from django_tables2 import RequestConfig
@@ -28,6 +28,11 @@ def wine_list(request):
     context = {'wine_list':wine_list}
     return render(request, 'reviews/wine_list.html', context)
 
+def wine_detail(request, wine_id):
+    wine = get_object_or_404(Wine, pk=wine_id)
+    form = ReviewForm()
+    return render(request, 'reviews/wine_detail.html', {'wine': wine, 'form': form})
+
 def staff_list(request):
     staff_list = StaffTable(User.objects.all())
     RequestConfig(request).configure(staff_list)
@@ -39,10 +44,10 @@ def staff_list(request):
     #staff_list = User.objects.all()
     #return render(request, 'reviews/staff_list.html', {'staff_list': staff_list})
 
-def wine_detail(request, wine_id):
-    wine = get_object_or_404(Wine, pk=wine_id)
-    form = ReviewForm()
-    return render(request, 'reviews/wine_detail.html', {'wine': wine, 'form': form})
+def staff_detail(request, staff_id):
+    staff = get_object_or_404(User, pk=staff_id)
+    form = EmpReviewForm()
+    return render(request, 'reviews/staff_detail.html', {'staff': staff, 'form': form})
 
 @login_required
 def add_review(request, wine_id):
@@ -66,6 +71,36 @@ def add_review(request, wine_id):
         return HttpResponseRedirect(reverse('reviews:wine_detail', args=(wine.id,)))
     
     return render(request, 'reviews/wine_detail.html', {'wine': wine, 'form': form})
+
+@login_required
+def add_emp_review(request, staff_id):
+    staff = get_object_or_404(User, pk=staff_id)
+    form = EmpReviewForm(request.POST)
+    if form.is_valid():
+        #rating = form.cleaned_data['rating']
+        #comment = form.cleaned_data['comment']
+        user_name = request.user.username
+        review = EmpReview()
+        review.staff = staff
+        review.satisfaction_level = form.cleaned_data['satisfaction_level']
+        review.last_evaluation = form.cleaned_data['last_evaluation']
+        review.number_project = form.cleaned_data['number_project']
+        review.average_montly_hours = form.cleaned_data['average_montly_hours']
+        review.time_spend_company = form.cleaned_data['time_spend_company']
+        review.Work_accident = form.cleaned_data['Work_accident']
+        review.left = form.cleaned_data['left']
+        review.promotion_last_5years = form.cleaned_data['promotion_last_5years']
+        review.department = form.cleaned_data['department']
+        review.salary = form.cleaned_data['salary']
+        review.user_name = user_name
+        review.save()
+        #update_clusters()
+        # Always return an HttpResponseRedirect after successfully dealing
+        # with POST data. This prevents data from being posted twice if a
+        # user hits the Back button.
+        return HttpResponseRedirect(reverse('reviews:staff_detail', args=(staff.id,)))
+    
+    return render(request, 'reviews/staff_detail.html', {'staff': staff, 'form': form})
     
 
 def user_review_list(request, username=None):

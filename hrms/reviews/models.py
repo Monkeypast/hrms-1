@@ -58,6 +58,7 @@ class EmpReview(models.Model):
         (8, 'marketing'),
         (9, 'RandD'),
     )
+    staff = models.ForeignKey(User)
     satisfaction_level = models.DecimalField(max_digits=3, decimal_places=2)
     last_evaluation = models.DecimalField(max_digits=3, decimal_places=2)
     number_project = models.IntegerField()

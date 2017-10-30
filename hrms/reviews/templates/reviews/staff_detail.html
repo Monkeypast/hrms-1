@@ -2,7 +2,7 @@
 {% load bootstrap3 %}
 
 {% block title %}
-<h2>{{ wine.name }}</h2>
+<h2>{{ staff.username }}</h2>
 <h5>{{ wine.review_set.count }} reviews ({{ wine.average_rating | floatformat }} average rating)</h5>
 {% endblock %}
 
@@ -28,7 +28,7 @@
 <h3>Add your review</h3>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'reviews:add_review' wine.id %}" method="post" class="form">
+<form action="{% url 'reviews:add_emp_review' staff.id %}" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form layout='inline' %}
     {% buttons %}
