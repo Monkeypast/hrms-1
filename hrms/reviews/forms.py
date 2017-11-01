@@ -38,5 +38,5 @@ class EmpReviewForm(ModelForm):
         }
         widgets = {
 #             'satisfaction_level': forms.RangeInput(attrs={'min': 0, 'max': 15}),
-            'user_name': Textarea(attrs={'cols': 40, 'rows': 15}),
+#             'user_name': Textarea(attrs={'cols': 40, 'rows': 15}),
         }

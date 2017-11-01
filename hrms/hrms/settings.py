@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'reviews',
     'registration',
     'django_tables2',
-    'floppyforms',
+#     'floppyforms',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
