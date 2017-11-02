@@ -37,9 +37,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+#     'django.contrib.sites',
     'bootstrap3',
     'reviews',
     'registration',
+    'django_tables2',
+#     'floppyforms',
 )
 
 ACCOUNT_ACTIVATION_DAYS = 7 # One-week activation window
