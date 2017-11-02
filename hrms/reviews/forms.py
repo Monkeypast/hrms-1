@@ -1,6 +1,5 @@
 from django.forms import ModelForm, Textarea
 from reviews.models import Review, EmpReview
-import floppyforms as forms
 
 # class Slider(forms.RangeInput):
 #     min = 5
