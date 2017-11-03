@@ -12,7 +12,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 
 # data = pd.read_csv('banking.csv')
 data = pd.read_csv('data/HR_comma_sep.csv')
-print(data.describe())
+# print(data.describe())
 print(data.shape)
 print(list(data.columns))
 
@@ -24,13 +24,13 @@ data.drop(data.columns[[0,11]],axis=1, inplace=True)
 print(data.head())
 
 # data2=pd.get_dummies(data, columns=['job','marital','default','housing','loan','poutcome'])
-data2=pd.get_dummies(data, columns=['satisfaction_level','last_evaluation','number_project','average_montly_hours','time_spend_company','Work_accident', 'Work_accident','promotion_last_5years','department','salary','left'])
-print(data2.head())
+# data2=pd.get_dummies(data, columns=['satisfaction_level','last_evaluation','number_project','average_montly_hours','time_spend_company','Work_accident', 'Work_accident','promotion_last_5years','department','salary','left'])
+# print(data2.head())
 
 # data2.drop(data2.columns[[12,16,18,21,24]], axis=1, inplace=True)
 
-sns.heatmap(data2.corr())
-plt.show()
+# sns.heatmap(data2.corr())
+# plt.show()
 
 
 
