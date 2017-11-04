@@ -93,6 +93,7 @@ def add_emp_review(request, staff_id):
         review.department = form.cleaned_data['department']
         review.salary = form.cleaned_data['salary']
         review.user_name = user_name
+        review.review_date = form.cleaned_data['review_date']
         review.save()
         #update_clusters()
         # Always return an HttpResponseRedirect after successfully dealing
@@ -129,16 +130,16 @@ def emp_recommendation_list(request):
     other_users_reviews_wine_ids = set(map(lambda x: x.wine.id, other_users_reviews))
     
     # then get a wine list including the previous IDs, order by rating
-    wine_list = sorted(
-        list(Wine.objects.filter(id__in=other_users_reviews_wine_ids)), 
+    staff_list = sorted(
+        list(User.objects.filter(id__in=other_users_reviews_wine_ids)), 
         key=lambda x: x.average_rating(), 
         reverse=True
     )
 
     return render(
         request, 
-        'reviews/user_recommendation_list.html', 
-        {'username': request.user.username,'wine_list': wine_list}
+        'reviews/staff_recommendation_list.html', 
+        {'username': request.user.username,'staff_list': staff_list}
     )
     
 

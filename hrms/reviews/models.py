@@ -70,6 +70,7 @@ class EmpReview(models.Model):
     department =models.IntegerField(choices=DEPARTMENT_CHOICES)
     salary = models.IntegerField(choices=SALARY_CHOICES)
     user_name = models.CharField(max_length=100)
+    review_date = models.DateField()
 
 class Cluster(models.Model):
     name = models.CharField(max_length=100)

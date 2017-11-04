@@ -37,9 +37,10 @@ df.insert(0, 'turnover', front)
 
 # Create an intercept term for the logistic regression equation
 df['int'] = 1
-indep_var = ['satisfaction', 'evaluation', 'yearsAtCompany', 'int', 'turnover']
+#indep_var = ['satisfaction', 'evaluation', 'yearsAtCompany', 'int', 'turnover']
+indep_var = ['satisfaction', 'evaluation', 'projectCount','averageMonthlyHours', 'yearsAtCompany','workAccident','promotion','department','salary', 'int', 'turnover']
 df = df[indep_var]
-
+print(list(df.columns))
 # Create train and test splits
 target_name = 'turnover'
 X = df.drop('turnover', axis=1)
@@ -55,3 +56,4 @@ y_pred = classifier.predict(X_test)
 confusion_matrix = confusion_matrix(y_test,y_pred)
 print(confusion_matrix)
 print(classifier.score(X_test,y_test))
+print(classification_report(y_test,y_pred))

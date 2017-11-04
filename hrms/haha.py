@@ -46,6 +46,7 @@ print(data.head())
 # y_pred = classifier.predict(X_test)
 # confusion_matrix = confusion_matrix(y_test,y_pred)
 # print(confusion_matrix)
+
 # 
 # print(classifier.score(X_test,y_test))
 # 
