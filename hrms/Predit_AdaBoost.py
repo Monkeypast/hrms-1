@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, precision_score, recall_score, confusion_matrix, precision_recall_curve
 from sklearn.preprocessing import RobustScaler
 df = pd.DataFrame.from_csv('data/HR_comma_sep.csv', index_col=None)
-df.drop(df.columns[[0,11]],axis=1, inplace=True)
+#df.drop(df.columns[[0,11]],axis=1, inplace=True)
 # Renaming certain columns for better readability
 df = df.rename(columns={'satisfaction_level': 'satisfaction', 
                         'last_evaluation': 'evaluation',

@@ -2,9 +2,9 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from .models import Review, Wine, Cluster, EmpReview
+from .models import Review, Wine, Cluster, EmpReview, EmpPossibleResigneeReview
 from .forms import ReviewForm, EmpReviewForm
-from .suggestions import update_clusters
+from .suggestions import update_clusters, train_Algorithm
 from .tables import StaffTable
 from django_tables2 import RequestConfig
 
@@ -106,35 +106,16 @@ def add_emp_review(request, staff_id):
 @login_required
 def emp_recommendation_list(request):
     
-    # get request user reviewed wines
-    user_reviews = EmpReview.objects.filter(user_name=request.user.username).prefetch_related('staff')
-    user_reviews_wine_ids = set(map(lambda x: x.staff.id, user_reviews))
-
-    # get request user cluster name (just the first one righ now)
-    try:
-        user_cluster_name = User.objects.get(username=request.user.username).cluster_set.first().name
-    except: # if no cluster assigned for a user, update clusters
-        update_clusters()
-        user_cluster_name = User.objects.get(username=request.user.username).cluster_set.first().name
+    #train_Algorithm()
+    # get reviews from EmpPossibleResigneeReview
+    emp_possible_resignee_review = EmpPossibleResigneeReview.objects.all()
+    emp_possible_resignee_review_id = set(map(lambda x: x.id, emp_possible_resignee_review))
     
-    # get usernames for other memebers of the cluster
-    user_cluster_other_members = \
-        Cluster.objects.get(name=user_cluster_name).users \
-            .exclude(username=request.user.username).all()
-    other_members_usernames = set(map(lambda x: x.username, user_cluster_other_members))
-
-    # get reviews by those users, excluding wines reviewed by the request user
-    other_users_reviews = \
-        Review.objects.filter(user_name__in=other_members_usernames) \
-            .exclude(wine__id__in=user_reviews_wine_ids)
-    other_users_reviews_wine_ids = set(map(lambda x: x.wine.id, other_users_reviews))
+    emp_review = EmpReview.objects.filter(id__in=emp_possible_resignee_review_id)
+    emp_review_user_name = set(map(lambda x: x.user_name, emp_review))
     
-    # then get a wine list including the previous IDs, order by rating
-    staff_list = sorted(
-        list(User.objects.filter(id__in=other_users_reviews_wine_ids)), 
-        key=lambda x: x.average_rating(), 
-        reverse=True
-    )
+    # Get possible resignee list
+    staff_list = StaffTable(User.objects.filter(username__in=emp_review_user_name))
 
     return render(
         request, 

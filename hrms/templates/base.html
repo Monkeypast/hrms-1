@@ -11,7 +11,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'reviews:wine_list' %}">Wine list</a></li>
+                <!-- <li><a href="{% url 'reviews:wine_list' %}">Wine list</a></li> -->
                 <li><a href="{% url 'reviews:staff_list' %}">Staff list</a></li>
                 <li><a href="{% url 'reviews:review_list' %}">Home</a></li>
             </ul>
@@ -19,7 +19,7 @@
             {% if user.is_authenticated %}
                 <li><a href="{% url 'reviews:user_review_list' user.username %}">Hello {{ user.username }}</a></li>
                 <li><a href="{% url 'reviews:emp_recommendation_list' %}">Possible Resignees</a></li>
-                <li><a href="{% url 'reviews:user_recommendation_list' %}">Suggestions</a></li>
+                <!--<li><a href="{% url 'reviews:user_recommendation_list' %}">Suggestions</a></li> -->
                 <li><a href="{% url 'auth:logout' %}">Logout</a></li>
                 {% else %}
                 <li><a href="{% url 'auth:login' %}">Login</a></li>
