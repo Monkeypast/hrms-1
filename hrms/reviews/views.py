@@ -33,6 +33,7 @@ def wine_detail(request, wine_id):
     form = ReviewForm()
     return render(request, 'reviews/wine_detail.html', {'wine': wine, 'form': form})
 
+@login_required
 def staff_list(request):
     staff_list = StaffTable(User.objects.all())
     RequestConfig(request).configure(staff_list)

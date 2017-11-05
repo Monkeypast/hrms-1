@@ -2,20 +2,20 @@
 {% load bootstrap3 %}
 
 {% block title %}
-<h2>Add your review for {{ staff.username }}</h2>
+    <h2>Add your review for {{ staff.username }}</h2>
 {% endblock %}
 
 {% block content %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'reviews:add_emp_review' staff.id %}" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form layout='inline' %}
-    {% buttons %}
-    <button type="submit" class="btn btn-primary">
-      {% bootstrap_icon "star" %} Add
-    </button>
-    {% endbuttons %}
-</form>
+    <form action="{% url 'reviews:add_emp_review' staff.id %}" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">
+                {% bootstrap_icon "star" %} Add
+            </button>
+        {% endbuttons %}
+    </form>
 {% endblock %}

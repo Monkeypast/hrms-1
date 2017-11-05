@@ -1,23 +1,56 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
+{#{% block title %}#}
+{#<h2>Latest Peer Reviews</h2>#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#{% if latest_review_list %}#}
+{#<div class="row">#}
+{#    {% for review in latest_review_list %}#}
+{#    <div class="col-xs-6 col-lg-4">#}
+{#        <h4><a href="{% url 'reviews:review_detail' review.id %}">#}
+{#        {{ review.wine.name }}#}
+{#        </a></h4>#}
+{#        <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></h6>#}
+{#        <p>{{ review.comment }}</p>#}
+{#    </div>#}
+{#    {% endfor %}#}
+{#</div>#}
+{#{% else %}#}
+{#<p>No reviews are available.</p>#}
+{#{% endif %}#}
+{#{% endblock %}#}
 
 {% block title %}
-<h2>Latest Peer Reviews</h2>
+    <h1>HRMS</h1> <br>
+    <h2>Project Business Goals</h2>
+    <div>
+        HR Analysis application by utilising machine learning and help to achieve its business to -
+        <ul>
+            <li>
+                Save Cost financially
+            </li>
+            <li>
+                Save brain drain effect
+            </li>
+            <li>
+                Morally Substantial
+            </li>
+        </ul>
+    </div>
+    <br>
+    <div>
+        <h3>Main Function</h3><br>
+        <p>
+            To build a prediction model to predict which of their
+analysis the employee data  and predicting the whether the experienced employee leaving prematurely?
+        </p>
+    </div>
 {% endblock %}
 
 {% block content %}
-{% if latest_review_list %}
-<div class="row">
-    {% for review in latest_review_list %}
-    <div class="col-xs-6 col-lg-4">
-        <h4><a href="{% url 'reviews:review_detail' review.id %}">
-        {{ review.wine.name }}
-        </a></h4>
-        <h6>Rated {{ review.rating }} of 5 by <a href="{% url 'reviews:user_review_list' review.user_name %}" >{{ review.user_name }}</a></h6>
-        <p>{{ review.comment }}</p>
-    </div>
-    {% endfor %}
-</div>
-{% else %}
-<p>No reviews are available.</p>
-{% endif %}
+
 {% endblock %}
+
