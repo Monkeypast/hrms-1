@@ -106,7 +106,7 @@ def add_emp_review(request, staff_id):
 @login_required
 def emp_recommendation_list(request):
     
-    #train_Algorithm()
+    train_Algorithm()
     # get reviews from EmpPossibleResigneeReview
     emp_possible_resignee_review = EmpPossibleResigneeReview.objects.all()
     emp_possible_resignee_review_id = set(map(lambda x: x.id, emp_possible_resignee_review))
