@@ -10,8 +10,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, classification_report, precision_score, recall_score, confusion_matrix, precision_recall_curve
 from sklearn.preprocessing import RobustScaler
-
-engine = create_engine('sqlite:///../db.sqlite3')
+from .models import Review, Wine, Cluster, EmpReview, EmpPossibleResigneeReview
+from django_pandas.io import read_frame
 
 def update_clusters():
     num_reviews = Review.objects.count()
@@ -43,8 +43,13 @@ def update_clusters():
             
             
 def train_Algorithm():
-    df = pd.read_sql_table('reviews_empreview', engine)
-    df.drop(df.columns[[0,11,12,13]],axis=1, inplace=True)
+    #engine = create_engine('sqlite:///../db.sqlite3')
+    #print(engine.has_table('reviews_empreview'))
+    #df = pd.read_sql_table('reviews_empreview', engine)
+    qs = EmpReview.objects.all()
+    df = read_frame(qs)
+    df.drop(df.columns[[0,1,12,13]],axis=1, inplace=True)
+
     # Renaming certain columns for better readability
     df = df.rename(columns={'satisfaction_level': 'satisfaction', 
                             'last_evaluation': 'evaluation',
@@ -58,7 +63,11 @@ def train_Algorithm():
     
     # Convert these variables into categorical variables
     #df["department"] = df["department"].astype('category').cat.codes
+    df['department'].replace(['sales', 'accounting', 'hr', 'technical', 'support', 'management',
+        'IT', 'product_mng', 'marketing', 'RandD'], [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], inplace = True)
+    df['salary'].replace(['low', 'medium', 'high'], [0, 1, 2], inplace = True)
     #df["salary"] = df["salary"].astype('category').cat.codes
+    print(df)
     
     # Move the reponse variable "turnover" to the front of the table
     front = df['turnover']
@@ -87,5 +96,5 @@ def train_Algorithm():
     
     data_out = X_current[X_current.turnover > 0]
     data_out = data_out.drop('int', axis=1)
-    data_out.to_sql('reviews_emppossibleresigneereview',engine, if_exists='replace', index=True, index_label='id')
+    #data_out.to_sql('reviews_emppossibleresigneereview',engine, if_exists='replace', index=True, index_label='id')
     
