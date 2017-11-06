@@ -3,6 +3,10 @@ from .models import Review, Wine, Cluster, EmpReview
 from django.contrib.auth.models import User
 from sklearn.cluster import KMeans
 from scipy.sparse import dok_matrix, csr_matrix
+
+
+
+
 import numpy as np
 import pandas as pd
 from sqlalchemy import create_engine
@@ -98,7 +102,6 @@ def train_Algorithm():
     #indep_var = ['satisfaction', 'evaluation', 'yearsAtCompany', 'int', 'turnover']
     indep_var = ['satisfaction', 'evaluation', 'projectCount','averageMonthlyHours', 'yearsAtCompany','workAccident','promotion','department','salary', 'int', 'turnover']
     df = df[indep_var]
-
 
     # Create train and test splits
     target_name = 'turnover'
