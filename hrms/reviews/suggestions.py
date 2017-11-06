@@ -1,4 +1,5 @@
 from .models import Review, Wine, Cluster, EmpReview
+
 from django.contrib.auth.models import User
 from sklearn.cluster import KMeans
 from scipy.sparse import dok_matrix, csr_matrix
