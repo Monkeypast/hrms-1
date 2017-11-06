@@ -32,10 +32,9 @@ class EmpReviewForm(ModelForm):
         fields = ['satisfaction_level', 'last_evaluation', 'number_project', 'average_montly_hours', 'time_spend_company', 'Work_accident', 'left', 'promotion_last_5years', 'department', 
                 'salary', 'user_name', 'review_date']
         labels = {
-#             'satisfaction_level': 'Satisfaction Level:',
-            'Work_accident':'Work Accident',
+            'satisfaction_level': 'Satisfaction level'
         }
         widgets = {
-#             'satisfaction_level': forms.RangeInput(attrs={'min': 0, 'max': 15}),
-#             'user_name': Textarea(attrs={'cols': 40, 'rows': 15}),
+            # 'satisfaction_level': forms.RangeInput(attrs={'min': 0, 'max': 15}),
+            # 'user_name': Textarea(attrs={'cols': 40, 'rows': 15}),
         }

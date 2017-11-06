@@ -99,6 +99,7 @@ def train_Algorithm():
     indep_var = ['satisfaction', 'evaluation', 'projectCount','averageMonthlyHours', 'yearsAtCompany','workAccident','promotion','department','salary', 'int', 'turnover']
     df = df[indep_var]
 
+
     # Create train and test splits
     target_name = 'turnover'
     X = df.drop('turnover', axis=1)
