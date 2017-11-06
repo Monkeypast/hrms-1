@@ -8,6 +8,8 @@ from .suggestions import update_clusters, train_Algorithm
 from .tables import StaffTable
 from django_tables2 import RequestConfig
 
+from registration.backends.simple.views import RegistrationView
+
 import datetime
 
 from django.contrib.auth.decorators import login_required
@@ -172,3 +174,7 @@ def user_recommendation_list(request):
         {'username': request.user.username,'wine_list': wine_list}
     )
 
+
+class HRMSRegistrationView(RegistrationView):
+    def get_success_url(self, user=None):
+        return "reviews/staff"

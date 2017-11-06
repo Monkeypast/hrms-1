@@ -62,7 +62,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'hrms.urls'
 
-LOGIN_REDIRECT_URL = '/reviews/review/user'
+# LOGIN_REDIRECT_URL = '/reviews/review/user'
+LOGIN_REDIRECT_URL = '/reviews/staff'
 
 TEMPLATES = [
     {
