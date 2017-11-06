@@ -1,7 +1,7 @@
 from django.forms import ModelForm, Textarea
 from reviews.models import Review, EmpReview
 from django import forms
-from bootstrap3_datetime.widgets import DateTimePicker
+#from bootstrap3_datetime.widgets import DateTimePicker
 from django.forms.extras.widgets import SelectDateWidget
 from django.contrib.admin.widgets import AdminDateWidget
 

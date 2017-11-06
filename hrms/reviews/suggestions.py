@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from sklearn.cluster import KMeans
 from scipy.sparse import dok_matrix, csr_matrix
 from sklearn.linear_model import LogisticRegression
-
+from sklearn.ensemble import AdaBoostClassifier
 
 
 import numpy as np
@@ -106,7 +106,7 @@ def train_Algorithm():
     X = df.drop('turnover', axis=1)
     
     y=df[target_name]
-    classifier = LogisticRegression()
+    classifier = AdaBoostClassifier(n_estimators=400, learning_rate=0.1)
     #classifier = RandomForestClassifier(n_estimators=1000, max_depth=None, min_samples_split=10, class_weight="balanced")
     classifier.fit(X, y)
     X_current = df[df.turnover < 1]

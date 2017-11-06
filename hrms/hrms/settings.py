@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'reviews',
     'registration',
     'django_tables2',
-    'bootstrap3_datetime',
+#    'bootstrap3_datetime',
 #     'floppyforms',
 )
 
