@@ -117,7 +117,7 @@ def emp_recommendation_list(request):
     
     # Get possible resignee list
     staff_list = StaffTable(User.objects.filter(username__in=emp_review_user_name))
-
+    RequestConfig(request).configure(staff_list)
     return render(
         request, 
         'reviews/staff_recommendation_list.html', 

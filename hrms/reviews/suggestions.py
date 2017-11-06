@@ -3,7 +3,7 @@ from .models import Review, Wine, Cluster, EmpReview
 from django.contrib.auth.models import User
 from sklearn.cluster import KMeans
 from scipy.sparse import dok_matrix, csr_matrix
-
+from sklearn.linear_model import LogisticRegression
 
 
 
@@ -32,7 +32,6 @@ def update_clusters():
             for user_review in user_reviews:
                 ratings_m[i,user_review.wine.id] = user_review.rating
 
-
         # Perform kmeans clustering
         k = int(num_users / 10) + 2
         kmeans = KMeans(n_clusters=k)
@@ -49,7 +48,6 @@ def update_clusters():
 
 def save_resignee_from_row(resignee_row):
     resignee = EmpPossibleResigneeReview()
-#     print(resignee_row['satisfaction'])
     resignee.id = resignee_row['index']
     resignee.satisfaction = resignee_row['satisfaction']
     resignee.evaluation = resignee_row['evaluation']
@@ -108,8 +106,8 @@ def train_Algorithm():
     X = df.drop('turnover', axis=1)
     
     y=df[target_name]
-    
-    classifier = RandomForestClassifier(n_estimators=1000, max_depth=None, min_samples_split=10, class_weight="balanced")
+    classifier = LogisticRegression()
+    #classifier = RandomForestClassifier(n_estimators=1000, max_depth=None, min_samples_split=10, class_weight="balanced")
     classifier.fit(X, y)
     X_current = df[df.turnover < 1]
     X_current = X_current.drop('turnover', axis=1)

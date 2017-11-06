@@ -1,5 +1,9 @@
 from django.forms import ModelForm, Textarea
 from reviews.models import Review, EmpReview
+from django import forms
+from bootstrap3_datetime.widgets import DateTimePicker
+from django.forms.extras.widgets import SelectDateWidget
+from django.contrib.admin.widgets import AdminDateWidget
 
 # class Slider(forms.RangeInput):
 #     min = 5
@@ -35,6 +39,10 @@ class EmpReviewForm(ModelForm):
             'satisfaction_level': 'Satisfaction level'
         }
         widgets = {
+            #'review_date': forms.DateTimeInput(attrs={'class': 'datetime-input'})
+            #'review_date': AdminDateWidget
+            #'review_date': DateTimePicker(options={"format": "YYYY-MM-DD HH:mm:ss", "pickTime": False})
+            #'review_date': forms.DateInput(attrs={'class':'datepicker'}),
             # 'satisfaction_level': forms.RangeInput(attrs={'min': 0, 'max': 15}),
             # 'user_name': Textarea(attrs={'cols': 40, 'rows': 15}),
         }

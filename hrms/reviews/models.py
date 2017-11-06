@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import numpy as np
-
+from bootstrap3_datetime.widgets import DateTimePicker
 
 class Wine(models.Model):
     name = models.CharField(max_length=200)
