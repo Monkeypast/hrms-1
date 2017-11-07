@@ -22,9 +22,11 @@ class PossibleResigneeTable(tables.Table):
         attrs = {'class': 'paleblue', 'width': '100%', 'border': 1}
         fields = ('id', 'satisfaction', 'evaluation', 'projectCount', 'yearsAtCompany', 'turnover')
 
+
 class ReviewedEmployeeTable(tables.Table):
     class Meta:
         model = User
         attrs = {'class': 'paleblue', 'width': '100%', 'border': 1}
-        fields = ('satisfaction_level', 'last_evaluation', 'number_project', 'average_montly_hours', 'time_spend_company', 'Work_accident',
-                  'left', 'promotion_last_5years', 'department', 'salary', 'user_name', 'review_date')
+        fields = (
+        'satisfaction_level', 'last_evaluation', 'number_project', 'average_montly_hours', 'time_spend_company',
+        'Work_accident', 'left', 'promotion_last_5years', 'department', 'salary', 'staff', 'review_date')

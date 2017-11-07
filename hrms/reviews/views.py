@@ -122,19 +122,24 @@ def add_emp_review(request, staff_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        return HttpResponseRedirect(reverse('reviews:staff_detail', args=(staff.id,)))
 
-    return render(request, 'reviews/staff_detail.html', {'staff': staff, 'form': form})
+    reviewed_list = ReviewedEmployeeTable(EmpReview.objects.all())
+    RequestConfig(request).configure(reviewed_list)
+    return render(request, 'reviews/reviewed_list.html', {'reviewed_list': reviewed_list})
 
 
 @login_required
 def emp_recommendation_list(request):
     train_Algorithm()
+    # predicted_list(request)
+    predicted_list = PossibleResigneeTable(EmpPossibleResigneeReview.objects.all())
+    RequestConfig(request).configure(predicted_list)
+    return render(request, 'reviews/predicted_list.html', {'predicted_list': predicted_list})
 
-    reviewed_list = ReviewedEmployeeTable(EmpReview.objects.all())
-    RequestConfig(request).configure(reviewed_list)
-
-    return render(request, 'reviews/reviewed_list.html', {'reviewed_list': reviewed_list})
+    # reviewed_list = ReviewedEmployeeTable(EmpReview.objects.all())
+    # RequestConfig(request).configure(reviewed_list)
+    #
+    # return render(request, 'reviews/reviewed_list.html', {'reviewed_list': reviewed_list})
 
 
 def user_review_list(request, username=None):
