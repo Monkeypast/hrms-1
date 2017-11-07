@@ -4,14 +4,14 @@
 {% load static %}
 
 {% block title %}
-    <h2>Staff List</h2>
+    <h2>Predicted List</h2>
 {% endblock %}
 
 {% block content %}
-    {% if staff_list %}
-        {% render_table staff_list %}
+    {% if predicted_list %}
+        {% render_table predicted_list %}
     {% else %}
-        <p>No staffs are available.</p>
+        <p>No prediction is available.</p>
     {% endif %}
 
 {% endblock %}

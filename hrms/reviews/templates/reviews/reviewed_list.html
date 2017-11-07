@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load render_table from django_tables2 %}
+{% load static %}
+
+{% block title %}
+    <h2>Reviewed Employee List</h2> <br>
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'reviews:emp_recommendation_list' %}" class="top-menu"><span class="glyphicon glyphicon-plus">Predict</span></a>
+    <br><br>
+
+    {% if reviewed_list %}
+        {% render_table reviewed_list %}
+    {% else %}
+        <p>No Reiviewed Employee is available.</p>
+    {% endif %}
+
+{% endblock %}
