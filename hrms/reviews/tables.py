@@ -28,5 +28,5 @@ class ReviewedEmployeeTable(tables.Table):
         model = User
         attrs = {'class': 'paleblue', 'width': '100%', 'border': 1}
         fields = (
-        'satisfaction_level', 'last_evaluation', 'number_project', 'average_montly_hours', 'time_spend_company',
-        'Work_accident', 'promotion_last_5years', 'department', 'salary', 'staff', 'review_date')
+            'satisfaction_level', 'last_evaluation', 'number_project', 'average_montly_hours', 'time_spend_company',
+            'Work_accident', 'left', 'promotion_last_5years', 'department', 'salary', 'staff', 'review_date')

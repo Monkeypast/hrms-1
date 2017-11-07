@@ -65,7 +65,7 @@ class EmpReview(models.Model):
     average_montly_hours = models.IntegerField()
     time_spend_company = models.IntegerField()
     Work_accident = models.IntegerField(choices=WORK_ACCIDENT_CHOICES)
-    left = 0
+    left = models.IntegerField(choices=LEFT_CHOICES)
     promotion_last_5years = models.IntegerField(choices=PROMOTION_CHOICES)
     department =models.IntegerField(choices=DEPARTMENT_CHOICES)
     salary = models.IntegerField(choices=SALARY_CHOICES)
