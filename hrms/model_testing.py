@@ -84,8 +84,8 @@ from sklearn.preprocessing import RobustScaler
     
      ## The line / model
     plt.scatter(y_test, predictions)
-    plt.xlabel(“Values”)
-    plt.ylabel(“Predictions”)
+    plt.xlabel(â€œValuesâ€�)
+    plt.ylabel(â€œPredictionsâ€�)
     
  
 

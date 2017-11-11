@@ -6,8 +6,6 @@ from django_tables2 import A
 class StaffTable(tables.Table):
     Peer_Review = tables.LinkColumn('reviews:staff_detail', text='Review', args=[A('pk')])
 
-    # Peer_Review = tables.TemplateColumn('<a href="/reviews/wine/5">Review</a>')
-    # Peer_Review = tables.TemplateColumn('<a href="{% url 'reviews:wine_detail' wine.id %}">Review</a>')
     class Meta:
         model = User
         # add class="paleblue" to <table> tag
